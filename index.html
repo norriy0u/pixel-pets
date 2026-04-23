@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PixelPets - Virtual Companion</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <audio id="bg-audio" loop preload="none">
+        <source src="https://cdn.pixabay.com/audio/2024/11/04/audio_4956b8a42c.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- BG -->
+    <div id="bg-scene"></div>
+
+    <!-- Intro -->
+    <div id="intro-screen" class="screen active">
+        <div class="card intro-card">
+            <div class="badge">VishwaNova 2026 • Fun & Viral</div>
+            <div class="pixel-art-display" id="intro-pet">
+                <div class="pet-bounce">🐱</div>
+            </div>
+            <h1>Pixel<span class="gradient-text">Pets</span></h1>
+            <p class="tagline">Your adorable virtual companion awaits! Feed, play, and watch them grow.</p>
+            <div class="pet-select">
+                <button class="pet-choice active" data-pet="cat" data-emoji="🐱">🐱</button>
+                <button class="pet-choice" data-pet="dog" data-emoji="🐶">🐶</button>
+                <button class="pet-choice" data-pet="bunny" data-emoji="🐰">🐰</button>
+                <button class="pet-choice" data-pet="panda" data-emoji="🐼">🐼</button>
+            </div>
+            <input type="text" id="pet-name-input" class="name-input" placeholder="Name your pet..." maxlength="12">
+            <button id="start-btn" class="primary-btn">🎮 Adopt & Play!</button>
+            <p class="hint">🔊 Cute background music included</p>
+        </div>
+    </div>
+
+    <!-- Main Pet Screen -->
+    <div id="pet-screen" class="screen">
+        <!-- Status Bars -->
+        <div class="status-panel">
+            <div class="pet-header">
+                <span class="pet-name-display" id="pet-name-label">Kitty</span>
+                <span class="pet-level" id="pet-level">Lv. 1</span>
+            </div>
+            <div class="stat-bars">
+                <div class="stat-bar">
+                    <span class="bar-label">❤️ Happiness</span>
+                    <div class="bar-track"><div class="bar-fill happiness" id="bar-happiness" style="width:80%"></div></div>
+                </div>
+                <div class="stat-bar">
+                    <span class="bar-label">🍔 Hunger</span>
+                    <div class="bar-track"><div class="bar-fill hunger" id="bar-hunger" style="width:60%"></div></div>
+                </div>
+                <div class="stat-bar">
+                    <span class="bar-label">⚡ Energy</span>
+                    <div class="bar-track"><div class="bar-fill energy" id="bar-energy" style="width:90%"></div></div>
+                </div>
+            </div>
+            <div class="xp-bar">
+                <div class="xp-fill" id="xp-fill" style="width:0%"></div>
+                <span class="xp-text" id="xp-text">0 / 100 XP</span>
+            </div>
+        </div>
+
+        <!-- Pet Display -->
+        <div class="pet-area" id="pet-area">
+            <div class="pet-sprite" id="pet-sprite">
+                <span class="pet-emoji" id="pet-emoji">🐱</span>
+            </div>
+            <div class="mood-bubble" id="mood-bubble"></div>
+            <div class="click-particles" id="click-particles"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-panel">
+            <button class="action-btn" id="btn-feed" data-action="feed">
+                <span class="action-icon">🍔</span>
+                <span class="action-name">Feed</span>
+            </button>
+            <button class="action-btn" id="btn-play" data-action="play">
+                <span class="action-icon">🎾</span>
+                <span class="action-name">Play</span>
+            </button>
+            <button class="action-btn" id="btn-pet" data-action="pet">
+                <span class="action-icon">✋</span>
+                <span class="action-name">Pet</span>
+            </button>
+            <button class="action-btn" id="btn-sleep" data-action="sleep">
+                <span class="action-icon">😴</span>
+                <span class="action-name">Sleep</span>
+            </button>
+            <button class="action-btn" id="btn-dance" data-action="dance">
+                <span class="action-icon">💃</span>
+                <span class="action-name">Dance</span>
+            </button>
+        </div>
+
+        <!-- Mini-game popup -->
+        <div id="minigame-overlay" class="minigame-overlay hidden">
+            <div class="minigame-card">
+                <h3>🎯 Quick Catch!</h3>
+                <p>Tap the treats as fast as you can!</p>
+                <div class="minigame-area" id="minigame-area"></div>
+                <div class="minigame-score">Score: <span id="minigame-score">0</span>/5</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
